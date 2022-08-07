@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: banking_gateway
+  cloud:
+    gateway:
+      routes:
+      - id: account_route
+        uri:
+          http://localhost:333
+        predicates:
+        - Path=/banking/account/**
+      - id: fundtransfer_route
+        uri:
+          http://localhost:555
+        predicates:
+        - Header=Service, Fund-Transfer
